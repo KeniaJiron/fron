@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
+import "./Student.css";
 
 interface Student {
   id: string;
@@ -73,43 +74,41 @@ function Students() {
   const handleEdit = async (id: string) => {};
 
   return (
-    <div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label htmlFor="name">Nombre:</label>
-            <input
-              type="text"
-              id="name"
-              value={newStudent.name}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="lastName">Apellido:</label>
-            <input
-              type="text"
-              id="lastName"
-              value={newStudent.lastName}
-              onChange={handleInputChange}
-            />
-          </div>
-          <div>
-            <label htmlFor="genero">Género:</label>
-            <select
-              id="genero"
-              value={newStudent.genero}
-              onChange={handleInputChange}
-            >
-              <option value="">Seleccione</option>
-              <option value="masculino">Masculino</option>
-              <option value="femenino">Femenino</option>
-            </select>
-          </div>
-          <button type="submit">Agregar</button>
-        </form>
-      </div>
-      <table>
+    <>
+      <form className="students-form" onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="name">Nombre:</label>
+          <input
+            type="text"
+            id="name"
+            value={newStudent.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="lastName">Apellido:</label>
+          <input
+            type="text"
+            id="lastName"
+            value={newStudent.lastName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="genero">Género:</label>
+          <select
+            id="genero"
+            value={newStudent.genero}
+            onChange={handleInputChange}
+          >
+            <option value="">Seleccione</option>
+            <option value="masculino">Masculino</option>
+            <option value="femenino">Femenino</option>
+          </select>
+        </div>
+        <button type="submit">Agregar</button>
+      </form>
+      <table className="students-table">
         <thead>
           <tr>
             <th>Nombre</th>
@@ -128,13 +127,13 @@ function Students() {
                 <button onClick={() => handleDelete(student.id)}>
                   Eliminar
                 </button>
-                <button onClick={() => handleEdit(student.id)}>Editar</button>
+                {/* Aquí puedes agregar el botón de editar */}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-    </div>
+    </>
   );
 }
 
